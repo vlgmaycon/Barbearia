@@ -87,10 +87,36 @@
       background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #111; border-color: var(--gold-light); box-shadow: 0 0 20px rgba(201, 168, 106, 0.35);
     }
 
-    .hero-content { text-align: center; max-width: 720px; margin: auto 0; z-index: 2; display: flex; flex-direction: column; align-items: center; }
-    .hero-title { font-size: clamp(32px, 5vw, 52px); font-weight: 800; color: var(--cream); text-transform: uppercase; margin: 15px 0 20px; line-height: 1.15; }
-    .hero-title strong { color: var(--gold-light); }
-    .hero-subtitle { font-size: 14px; color: #c4c0b8; margin-bottom: 25px; max-width: 580px; margin-left: auto; margin-right: auto; }
+    /* ALINHAMENTO À ESQUERDA NO HERO */
+    .hero-content {
+      text-align: left;
+      max-width: 800px;
+      margin: auto 0 auto 5%;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+    .hero-content .eyebrow { justify-content: flex-start; margin-left: 0; }
+    
+    /* TÍTULO EM 3 LINHAS */
+    .hero-title {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 400; /* Linhas 1 e 2 em peso normal */
+      color: var(--cream);
+      text-transform: uppercase;
+      margin: 15px 0 20px;
+      line-height: 1.25;
+      text-align: left;
+    }
+    .hero-title strong {
+      color: var(--gold-light);
+      font-weight: 900; /* Linha 3 em negrito */
+      display: block;
+    }
+    
+    .hero-subtitle { font-size: 14px; color: #c4c0b8; margin-bottom: 25px; max-width: 580px; margin-left: 0; margin-right: auto; text-align: left; }
 
     /* =========================================================
        CATÁLOGO DE SERVIÇOS
@@ -141,7 +167,7 @@
     .custom-pill-input:focus { border-color: var(--gold); box-shadow: 0 0 15px rgba(201, 168, 106, 0.3); background: rgba(20, 21, 21, 0.9); }
 
     .custom-dropdown-container { position: relative; width: 100%; }
-    .custom-dropdown-trigger { display: flex; align-items: center; justify-space-between; cursor: pointer; user-select: none; }
+    .custom-dropdown-trigger { display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
     .custom-dropdown-trigger:hover, .custom-dropdown-trigger.open { border-color: var(--gold); box-shadow: 0 0 15px rgba(201, 168, 106, 0.3); background: rgba(20, 21, 21, 0.9); }
     .custom-dropdown-trigger .select-arrow-icon { color: var(--gold); font-size: 12px; transition: transform 0.3s ease; }
     .custom-dropdown-trigger.open .select-arrow-icon { transform: rotate(180deg); }
@@ -322,6 +348,7 @@
     .footer { padding: 25px 0 35px; background: #060707; text-align: center; border-top: 1px solid var(--border-light); color: var(--muted); font-size: 11px; }
 
     @media (max-width: 900px) {
+      .hero-content { margin-left: 0; }
       .booking-main-grid { grid-template-columns: 1fr; }
       .compact-booking-panel { grid-template-columns: 1fr; }
       .compact-hours-panel { border-left: 0; border-top: 1px dashed var(--border-light); padding-left: 0; padding-top: 15px; margin-top: 15px; }
@@ -429,7 +456,11 @@
 
             <div className="hero-content">
               <div className="eyebrow"><i className="fa-solid fa-crown"></i> SUBTÍTULO DO SEU NEGÓCIO</div>
-              <h1 className="hero-title">Título Principal <strong>Em Destaque</strong></h1>
+              <h1 className="hero-title">
+                MAIS QUE UM<br />
+                CORTE,<br />
+                <strong>UMA EXPERIÊNCIA!</strong>
+              </h1>
               <p className="hero-subtitle">Escreva aqui uma breve descrição sobre a sua barbearia, estilo de atendimento e compromisso com o cliente.</p>
             </div>
           </section>

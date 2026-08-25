@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Barbearia Elite</title>
+  <title>Sua Barbearia</title>
   
   <!-- Fontes e Ícones -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -99,7 +99,7 @@
     .vertical-services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; max-width: 900px; margin: 0 auto; }
     .service-card-vertical { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-align: center; transition: var(--transition); }
     .service-card-vertical:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
-    .service-card-vertical .service-image { width: 100%; height: 220px; overflow: hidden; border-bottom: 1px solid var(--border-light); }
+    .service-card-vertical .service-image { width: 100%; height: 220px; overflow: hidden; border-bottom: 1px solid var(--border-light); background: #1a1c1c; display: flex; align-items: center; justify-content: center; color: var(--muted); }
     .service-card-vertical .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
     .service-card-vertical:hover .service-image img { transform: scale(1.05); }
     .service-info { padding: 20px; }
@@ -141,7 +141,7 @@
     .custom-pill-input:focus { border-color: var(--gold); box-shadow: 0 0 15px rgba(201, 168, 106, 0.3); background: rgba(20, 21, 21, 0.9); }
 
     .custom-dropdown-container { position: relative; width: 100%; }
-    .custom-dropdown-trigger { display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
+    .custom-dropdown-trigger { display: flex; align-items: center; justify-space-between; cursor: pointer; user-select: none; }
     .custom-dropdown-trigger:hover, .custom-dropdown-trigger.open { border-color: var(--gold); box-shadow: 0 0 15px rgba(201, 168, 106, 0.3); background: rgba(20, 21, 21, 0.9); }
     .custom-dropdown-trigger .select-arrow-icon { color: var(--gold); font-size: 12px; transition: transform 0.3s ease; }
     .custom-dropdown-trigger.open .select-arrow-icon { transform: rotate(180deg); }
@@ -173,6 +173,8 @@
     .barber-avatar-thumb {
       width: 44px; height: 44px; border-radius: 50%; overflow: hidden;
       border: 2px solid rgba(255, 255, 255, 0.2); flex-shrink: 0; transition: var(--transition);
+      background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center;
+      color: var(--gold-light); font-size: 18px;
     }
     .barber-avatar-thumb img { width: 100%; height: 100%; object-fit: cover; }
     .barber-row-item span { font-size: 13px; font-weight: 600; color: var(--white); transition: var(--transition); }
@@ -182,7 +184,7 @@
       border-color: var(--gold-light);
       box-shadow: 0 8px 20px rgba(201, 168, 106, 0.3);
     }
-    .barber-row-item.selected .barber-avatar-thumb { border-color: #111; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
+    .barber-row-item.selected .barber-avatar-thumb { border-color: #111; color: #111; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
     .barber-row-item.selected span { color: #111; font-weight: 800; }
 
     .calendar-hours-wrapper { display: flex; flex-direction: column; }
@@ -280,7 +282,6 @@
       font-size: 22px;
     }
 
-    /* Animação de Pulsar */
     @keyframes pulse-wpp {
       0% {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
@@ -344,9 +345,9 @@
       const [activeNav, setActiveNav] = useState("catalogo");
       
       // Form States
-      const [service, setService] = useState("Corte Tradicional - R$ 50,00");
+      const [service, setService] = useState("Serviço 1 - R$ 0,00");
       const [isServiceOpen, setIsServiceOpen] = useState(false);
-      const [selectedBarber, setSelectedBarber] = useState("Carlos");
+      const [selectedBarber, setSelectedBarber] = useState("Funcionário 1");
       const [calendarDate, setCalendarDate] = useState(new Date());
       const [selectedDateStr, setSelectedDateStr] = useState("2026-08-25");
       const [selectedTimeStr, setSelectedTimeStr] = useState("14:00");
@@ -355,18 +356,18 @@
       const [modalOpen, setModalOpen] = useState(false);
 
       const servicesList = [
-        "Corte Tradicional - R$ 50,00",
-        "Corte Degradê / Fade - R$ 60,00",
-        "Barba com Toalha Quente - R$ 45,00",
-        "Modelagem de Barba - R$ 35,00",
-        "Pacote Premium (Cabelo + Barba) - R$ 90,00",
-        "Pacote Executivo VIP - R$ 130,00"
+        "Serviço 1 - R$ 0,00",
+        "Serviço 2 - R$ 0,00",
+        "Serviço 3 - R$ 0,00",
+        "Serviço 4 - R$ 0,00",
+        "Pacote 1 - R$ 0,00",
+        "Pacote VIP - R$ 0,00"
       ];
 
       const scheduleMap = {
-        "Carlos": ["09:00", "11:00", "15:00"],
-        "Lucas": ["10:00", "14:00", "16:00"],
-        "Matheus": ["09:00", "13:00", "17:00"],
+        "Funcionário 1": ["09:00", "11:00", "15:00"],
+        "Funcionário 2": ["10:00", "14:00", "16:00"],
+        "Funcionário 3": ["09:00", "13:00", "17:00"],
         "Qualquer": ["11:00"]
       };
 
@@ -414,8 +415,8 @@
           <section id="inicio" className="hero-full-section">
             <div className="hero-logo">
               <i className="fa-solid fa-scissors"></i>
-              <span>TRADIÇÃO & ESTILO</span>
-              <strong>BARBEARIA ELITE</strong>
+              <span>SLOGAN DA EMPRESA</span>
+              <strong>SUA LOGO AQUI</strong>
             </div>
 
             <nav className="hero-nav">
@@ -427,9 +428,9 @@
             </nav>
 
             <div className="hero-content">
-              <div className="eyebrow"><i className="fa-solid fa-crown"></i> ESTILO & TRADIÇÃO</div>
-              <h1 className="hero-title">Exclusividade em <strong>Cada Detalhe</strong></h1>
-              <p className="hero-subtitle">Cortes modernos, barba alinhada e um atendimento exclusivo pensado para a sua melhor experiência visual e de bem-estar.</p>
+              <div className="eyebrow"><i className="fa-solid fa-crown"></i> SUBTÍTULO DO SEU NEGÓCIO</div>
+              <h1 className="hero-title">Título Principal <strong>Em Destaque</strong></h1>
+              <p className="hero-subtitle">Escreva aqui uma breve descrição sobre a sua barbearia, estilo de atendimento e compromisso com o cliente.</p>
             </div>
           </section>
 
@@ -457,12 +458,12 @@
                 {activeTab === 'cabelo' && (
                   <div className="vertical-services-grid">
                     <div className="service-card-vertical">
-                      <div className="service-image"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" alt="Corte Tradicional" /></div>
-                      <div className="service-info"><h3>Corte Tradicional</h3><p>R$ 50,00</p></div>
+                      <div className="service-image"><i className="fa-solid fa-image fa-2x"></i></div>
+                      <div className="service-info"><h3>Serviço 1</h3><p>R$ 0,00</p></div>
                     </div>
                     <div className="service-card-vertical">
-                      <div className="service-image"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=80" alt="Corte Degradê / Fade" /></div>
-                      <div className="service-info"><h3>Corte Degradê / Fade</h3><p>R$ 60,00</p></div>
+                      <div className="service-image"><i className="fa-solid fa-image fa-2x"></i></div>
+                      <div className="service-info"><h3>Serviço 2</h3><p>R$ 0,00</p></div>
                     </div>
                   </div>
                 )}
@@ -470,12 +471,12 @@
                 {activeTab === 'barba' && (
                   <div className="vertical-services-grid">
                     <div className="service-card-vertical">
-                      <div className="service-image"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600&q=80" alt="Barba com Toalha Quente" /></div>
-                      <div className="service-info"><h3>Barba com Toalha Quente</h3><p>R$ 45,00</p></div>
+                      <div className="service-image"><i className="fa-solid fa-image fa-2x"></i></div>
+                      <div className="service-info"><h3>Serviço 3</h3><p>R$ 0,00</p></div>
                     </div>
                     <div className="service-card-vertical">
-                      <div className="service-image"><img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=600&q=80" alt="Modelagem de Barba" /></div>
-                      <div className="service-info"><h3>Modelagem de Barba</h3><p>R$ 35,00</p></div>
+                      <div className="service-image"><i className="fa-solid fa-image fa-2x"></i></div>
+                      <div className="service-info"><h3>Serviço 4</h3><p>R$ 0,00</p></div>
                     </div>
                   </div>
                 )}
@@ -484,39 +485,39 @@
                   <div className="packages-grid">
                     <div className="package-card">
                       <div className="package-icon"><i className="fa-solid fa-scissors"></i></div>
-                      <h3>Pacote Tradicional</h3>
+                      <h3>Pacote Inicial</h3>
                       <ul>
-                        <li><i className="fa-solid fa-check"></i> Corte de Cabelo Escolhido</li>
-                        <li><i className="fa-solid fa-check"></i> Lavagem Capilar Especial</li>
-                        <li><i className="fa-solid fa-check"></i> Finalização com Pomada</li>
+                        <li><i className="fa-solid fa-check"></i> Item do Pacote 1</li>
+                        <li><i className="fa-solid fa-check"></i> Item do Pacote 2</li>
+                        <li><i className="fa-solid fa-check"></i> Item do Pacote 3</li>
                       </ul>
-                      <div className="package-price">R$ 50</div>
-                      <button className="package-button" onClick={() => handleSelectPackage("Corte Tradicional - R$ 50,00")}>Selecionar</button>
+                      <div className="package-price">R$ 0</div>
+                      <button className="package-button" onClick={() => handleSelectPackage("Pacote Inicial - R$ 0,00")}>Selecionar</button>
                     </div>
 
                     <div className="package-card featured">
                       <div className="package-badge">MAIS POPULAR</div>
                       <div className="package-icon"><i className="fa-solid fa-crown"></i></div>
-                      <h3>Pacote Premium</h3>
+                      <h3>Pacote Intermediário</h3>
                       <ul>
-                        <li><i className="fa-solid fa-check"></i> Corte + Barba Completa</li>
-                        <li><i className="fa-solid fa-check"></i> Terapia com Toalha Quente</li>
-                        <li><i className="fa-solid fa-check"></i> Design de Sobrancelha</li>
+                        <li><i className="fa-solid fa-check"></i> Item do Pacote 1</li>
+                        <li><i className="fa-solid fa-check"></i> Item do Pacote 2</li>
+                        <li><i className="fa-solid fa-check"></i> Item do Pacote 3</li>
                       </ul>
-                      <div className="package-price">R$ 90</div>
-                      <button className="package-button" onClick={() => handleSelectPackage("Pacote Premium (Cabelo + Barba) - R$ 90,00")}>Selecionar</button>
+                      <div className="package-price">R$ 0</div>
+                      <button className="package-button" onClick={() => handleSelectPackage("Pacote Intermediário - R$ 0,00")}>Selecionar</button>
                     </div>
 
                     <div className="package-card">
                       <div className="package-icon"><i className="fa-solid fa-gem"></i></div>
-                      <h3>Pacote Executivo</h3>
+                      <h3>Pacote Completo</h3>
                       <ul>
-                        <li><i className="fa-solid fa-check"></i> Combo VIP Cabelo & Barba</li>
-                        <li><i className="fa-solid fa-check"></i> Hidratação Capilar Profunda</li>
-                        <li><i className="fa-solid fa-check"></i> Cerveja ou Café Cortesia</li>
+                        <li><i className="fa-solid fa-check"></i> Item do Pacote 1</li>
+                        <li><i className="fa-solid fa-check"></i> Item do Pacote 2</li>
+                        <li><i className="fa-solid fa-check"></i> Item do Pacote 3</li>
                       </ul>
-                      <div className="package-price">R$ 130</div>
-                      <button className="package-button" onClick={() => handleSelectPackage("Pacote Executivo VIP - R$ 130,00")}>Selecionar</button>
+                      <div className="package-price">R$ 0</div>
+                      <button className="package-button" onClick={() => handleSelectPackage("Pacote Completo - R$ 0,00")}>Selecionar</button>
                     </div>
                   </div>
                 )}
@@ -570,10 +571,10 @@
                     <div className="barbers-vertical-list">
                       <label>2. Profissional</label>
                       {[
-                        { name: "Qualquer", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" },
-                        { name: "Carlos", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" },
-                        { name: "Lucas", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" },
-                        { name: "Matheus", img: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80" }
+                        { name: "Qualquer" },
+                        { name: "Funcionário 1" },
+                        { name: "Funcionário 2" },
+                        { name: "Funcionário 3" }
                       ].map((b) => (
                         <div 
                           key={b.name} 
@@ -581,7 +582,7 @@
                           onClick={() => setSelectedBarber(b.name)}
                         >
                           <div className="barber-avatar-thumb">
-                            <img src={b.img} alt={b.name} />
+                            <i className="fa-solid fa-user"></i>
                           </div>
                           <span>{b.name}</span>
                         </div>
@@ -693,34 +694,34 @@
               </div>
 
               <div className="extra-grid">
-                {/* CARD DE ENDEREÇO (ABRE GOOGLE MAPS / GPS) */}
+                {/* CARD DE ENDEREÇO */}
                 <a 
-                  href="https://www.google.com/maps/search/?api=1&query=Av.+Paulista,+1000+-+Bela+Vista,+São+Paulo+-+SP" 
+                  href="https://maps.google.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="contact-card"
                 >
                   <div className="contact-icon"><i className="fa-solid fa-location-dot"></i></div>
                   <h4>Endereço</h4>
-                  <p>Av. Paulista, 1000 - Bela Vista<br />São Paulo - SP<br /><small style={{ color: 'var(--gold-light)', fontStyle: 'italic', display: 'inline-block', marginTop: '4px' }}>Clique para abrir no GPS</small></p>
+                  <p>Seu Endereço Aqui, Nº 000<br />Bairro - Cidade / UF<br /><small style={{ color: 'var(--gold-light)', fontStyle: 'italic', display: 'inline-block', marginTop: '4px' }}>Clique para abrir no GPS</small></p>
                 </a>
 
                 <div className="contact-card">
                   <div className="contact-icon"><i className="fa-solid fa-clock"></i></div>
                   <h4>Funcionamento</h4>
-                  <p>Segunda a Sexta: 09h às 20h<br />Sábado: 08h às 19h</p>
+                  <p>Segunda a Sexta: 00h às 00h<br />Sábado: 00h às 00h</p>
                 </div>
 
                 {/* CARD DE ATENDIMENTO (WHATSAPP) */}
                 <a 
-                  href="https://wa.me/5511999998888?text=Olá!%20Gostaria%20de%20atendimento%20ou%20informações." 
+                  href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20atendimento%20ou%20informações." 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="contact-card wpp-card"
                 >
                   <div className="contact-icon"><i className="fa-brands fa-whatsapp"></i></div>
                   <h4>Atendimento</h4>
-                  <p>WhatsApp: (11) 99999-8888<br />Clique para chamar no WhatsApp</p>
+                  <p>WhatsApp: (00) 00000-0000<br />Clique para chamar no WhatsApp</p>
                 </a>
               </div>
 
@@ -733,9 +734,9 @@
             </div>
           </section>
 
-          {/* BOTÃO FLUTUANTE DO WHATSAPP COM ANIMAÇÃO E FRASE */}
+          {/* BOTÃO FLUTUANTE DO WHATSAPP */}
           <a 
-            href="https://wa.me/5511999998888?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." 
+            href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." 
             target="_blank" 
             rel="noopener noreferrer" 
             className="wpp-float-btn"
@@ -762,7 +763,7 @@
 
           <footer className="footer">
             <div className="container">
-              <p>&copy; 2026 Barbearia Elite. Todos os direitos reservados.</p>
+              <p>&copy; 2026 Nome da Empresa. Todos os direitos reservados.</p>
             </div>
           </footer>
         </div>
